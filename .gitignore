@@ -1,0 +1,22 @@
+
+# Python environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Dataset
+dataset/
+
+# Generated results
+results/
+
+# Environment variables
+.env
+
+# System files
+.DS_Store
+Thumbs.db
