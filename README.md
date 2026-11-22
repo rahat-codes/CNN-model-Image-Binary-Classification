@@ -1,164 +1,69 @@
-# 🍃 Apple Leaf Binary Image Classification Using CNN
+# 🍃 LeafVision — Apple Leaf Binary Classification Using CNN
 
-<p align="center">
-  <strong>A Deep Learning Project Using TensorFlow and Keras</strong>
-</p>
+A deep learning project that uses a **Convolutional Neural Network (CNN)** to classify apple leaf images into two categories: **Healthy** and **Unhealthy**.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python" alt="Python">
-  <img src="https://img.shields.io/badge/TensorFlow-2.x-orange?logo=tensorflow" alt="TensorFlow">
-  <img src="https://img.shields.io/badge/Keras-Deep%20Learning-red?logo=keras" alt="Keras">
-  <img src="https://img.shields.io/badge/Task-Binary%20Classification-green" alt="Binary Classification">
-</p>
+LeafVision provides a complete machine learning workflow, including dataset inspection, preprocessing, dataset splitting, model training, evaluation, and image prediction. It also includes a command-line interface (CLI) and an interactive Streamlit dashboard for visualizing the project.
 
-## 1. Project Overview
+---
 
-This project implements a **Convolutional Neural Network (CNN)** to classify apple leaf images into two categories:
+## 📌 Project Overview
 
-- **Healthy Leaf**
-- **Unhealthy Leaf**
-
-The primary objective is to understand and implement a complete deep learning workflow, starting from image preprocessing and dataset preparation to CNN training, model evaluation, and image prediction.
-
-The model learns visual patterns from apple leaf images and uses those patterns to predict whether an input leaf belongs to the healthy or unhealthy category.
-
-## 2. Project Objectives
-
-- Understand the fundamentals of Convolutional Neural Networks.
-- Perform image preprocessing and dataset preparation.
-- Build a CNN architecture using TensorFlow and Keras.
-- Train a binary image classification model.
-- Evaluate model performance using standard classification metrics.
-- Predict new images using the trained model.
-- Analyze classification results and prediction errors.
-
-## 3. Dataset Description
-
-The dataset contains two image categories:
-
-| Class | Description |
+| Attribute | Details |
 |---|---|
-| Healthy Leaf | Images of healthy apple leaves |
-| Unhealthy Leaf | Images of unhealthy apple leaves |
-
-**Dataset distribution:**
-
-| Dataset | Healthy | Unhealthy | Total |
-|---|---:|---:|---:|
-| Training | 210 | 210 | 420 |
-| Validation | 45 | 45 | 90 |
-| Testing | 45 | 45 | 90 |
-| **Total** | **300** | **300** | **600** |
-
-The dataset was divided into training, validation, and testing subsets.
-
-- Training data: Used to learn model parameters.
-- Validation data: Used to monitor performance during training.
-- Testing data: Used for final model evaluation.
-
-**Note:** Dataset images are not included in this GitHub repository. Users must provide the dataset locally using the expected directory structure.
-
-## 4. CNN Model Architecture
-
-The project uses a custom CNN architecture developed with TensorFlow/Keras.
-
-### Architecture Overview
-
-| Layer | Configuration | Purpose |
-|---|---|---|
-| Input | 128 × 128 × 3 | Accept RGB images |
-| Rescaling | 1/255 | Normalize pixel values |
-| Random Flip | Horizontal | Data augmentation |
-| Random Rotation | 0.08 | Data augmentation |
-| Random Zoom | 0.1 | Data augmentation |
-| Random Contrast | 0.1 | Data augmentation |
-| Conv2D | 32 filters | Extract low-level features |
-| MaxPooling2D | 2 × 2 | Reduce spatial dimensions |
-| Conv2D | 64 filters | Extract intermediate features |
-| MaxPooling2D | 2 × 2 | Reduce spatial dimensions |
-| Conv2D | 128 filters | Extract higher-level features |
-| MaxPooling2D | 2 × 2 | Reduce spatial dimensions |
-| Global Average Pooling | - | Reduce feature maps |
-| Dense | 128 neurons, ReLU | Learn classification patterns |
-| Dropout | 0.4 | Reduce overfitting |
-| Output | 1 neuron, Sigmoid | Binary classification |
-
-**Total trainable and non-trainable parameters:** 109,889.
-
-### Binary Classification
-
-The output layer uses the sigmoid activation function.
-
-The model produces a value between 0 and 1, representing its predicted probability for the Unhealthy Leaf class.
-
-Classification threshold:
-
-- Probability < 0.5 → Healthy Leaf
-- Probability ≥ 0.5 → Unhealthy Leaf
-
-## 5. Model Training
-
-The model was trained using TensorFlow and Keras.
-
-**Training configuration:**
-
-| Parameter | Value |
-|---|---|
+| Project Name | LeafVision |
+| Project Type | Binary Image Classification |
+| Machine Learning Task | Supervised Learning |
+| Model Architecture | Convolutional Neural Network (CNN) |
 | Framework | TensorFlow / Keras |
-| Input Image Size | 128 × 128 |
-| Batch Size | 32 |
-| Maximum Epochs | 30 |
-| Optimizer | Adam |
+| Programming Language | Python |
+| Image Input Size | 128 × 128 × 3 |
+| Output Layer | Sigmoid |
 | Loss Function | Binary Crossentropy |
-| Output Activation | Sigmoid |
-| Early Stopping | Enabled |
-| Model Checkpoint | Enabled |
+| Optimizer | Adam |
+| Maximum Training Epochs | 30 |
+| Frontend | Streamlit |
 
-Early stopping and model checkpointing were used to monitor validation performance and preserve the best-performing model.
+### Classification Categories
 
-## 6. Experimental Results
+- **Healthy Leaf (Class 0):** An apple leaf classified as healthy.
+- **Unhealthy Leaf (Class 1):** An apple leaf classified as unhealthy.
 
-The trained CNN was evaluated on 90 test images.
+> Note: This model performs binary classification only. It does not identify specific apple diseases.
 
-<details>
-<summary><strong>Test Performance</strong></summary>
+---
 
-| Metric | Result |
-|---|---:|
-| Total Test Images | 90 |
-| Correct Predictions | 77 |
-| Incorrect Predictions | 13 |
-| **Test Accuracy** | **85.56%** |
+## 🎯 Project Objectives
 
-</details>
+The main objectives of this project are to:
 
-### Confusion Matrix
+1. Understand the complete workflow of an image classification project.
+2. Learn how to organize and preprocess image datasets.
+3. Build a CNN model using TensorFlow and Keras.
+4. Understand convolution, pooling, feature extraction, and classification.
+5. Train and validate a deep learning model.
+6. Evaluate model performance using classification metrics.
+7. Predict new images using a trained model.
+8. Develop a command-line interface for executing project operations.
+9. Build an interactive dashboard for visualizing model performance and predictions.
 
-| Actual / Predicted | Healthy | Unhealthy |
-|---|---:|---:|
-| Healthy | 35 | 10 |
-| Unhealthy | 3 | 42 |
+---
 
-### Classification Metrics
-
-| Class | Precision | Recall | F1-Score |
-|---|---:|---:|---:|
-| Healthy | 92.11% | 77.78% | 84.34% |
-| Unhealthy | 80.77% | 93.33% | 86.60% |
-
-**Observations:**
-
-- The model correctly classified 77 out of 90 test images.
-- It performed better at identifying unhealthy leaves in terms of recall.
-- Some healthy leaves were incorrectly classified as unhealthy.
-- The results indicate that the model can learn useful visual patterns from the training dataset.
-
-These results represent an initial experiment on a relatively small dataset. Further testing with larger and more diverse images is necessary to evaluate real-world generalization.
-
-## 7. Project Structure
+## 📂 Project Structure
 
 ```text
 CNN-model-Image-Binary-Classification/
+│
+├── app/
+│   ├── dashboard.py
+│   │
+│   ├── pages/
+│   │   ├── 1_Dataset.py
+│   │   ├── 2_Training.py
+│   │   ├── 3_Evaluation.py
+│   │   └── 4_Prediction.py
+│   │
+│   └── components/
+│       └── __init__.py
 │
 ├── dataset/
 │   ├── original/
@@ -167,17 +72,29 @@ CNN-model-Image-Binary-Classification/
 │   │
 │   └── split/
 │       ├── train/
+│       │   ├── Healthy_leaf/
+│       │   └── Unhealthy_leaf/
+│       │
 │       ├── validation/
+│       │   ├── Healthy_leaf/
+│       │   └── Unhealthy_leaf/
+│       │
 │       └── test/
+│           ├── Healthy_leaf/
+│           └── Unhealthy_leaf/
 │
 ├── models/
 │   ├── best_leaf_classifier.keras
 │   └── leaf_classifier.keras
 │
 ├── results/
-│   └── predictions/
-│       ├── Healthy_leaf/
-│       └── Unhealthy_leaf/
+│   ├── plots/
+│   │   ├── training_history.png
+│   │   └── confusion_matrix.png
+│   │
+│   ├── training_history.csv
+│   ├── evaluation_report.txt
+│   └── evaluation_metrics.json
 │
 ├── src/
 │   ├── augmentation.py
@@ -190,16 +107,312 @@ CNN-model-Image-Binary-Classification/
 │   ├── split_dataset.py
 │   └── train.py
 │
+├── main.py
 ├── experiment.ipynb
-├── collect.py
 ├── requirements.txt
-├── .gitignore
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
-## 8. Installation and Setup
+*The dataset and generated results directories may be absent from a fresh Git clone because they are excluded from version control. Generate or provide these locally before running the corresponding operations.*
 
-### Step 1: Clone the Repository
+---
+
+## 📊 Dataset Information
+
+The project uses a collection of **600 apple leaf images** distributed equally between the two classes.
+
+### Original Dataset
+
+| Class | Number of Images |
+|---|---:|
+| Healthy Leaf | 300 |
+| Unhealthy Leaf | 300 |
+| **Total** | **600** |
+
+### Dataset Splitting
+
+The dataset is divided into three subsets:
+
+| Dataset | Percentage | Healthy | Unhealthy | Total |
+|---|---:|---:|---:|---:|
+| Training | 70% | 210 | 210 | 420 |
+| Validation | 15% | 45 | 45 | 90 |
+| Testing | 15% | 45 | 45 | 90 |
+| **Total** | **100%** | **300** | **300** | **600** |
+
+### Purpose of Each Subset
+
+- **Training:** Used to learn patterns and features from apple leaf images.
+- **Validation:** Used to monitor model performance during training and support model selection.
+- **Testing:** Used to evaluate the trained model on images not used for training or validation.
+
+---
+
+## ⚙️ Image Preprocessing
+
+Before training, images are prepared for the CNN model.
+
+The preprocessing pipeline includes:
+
+1. Loading images from their respective class directories.
+2. Resizing images to `128 × 128` pixels.
+3. Converting images into RGB format.
+4. Converting images into numerical tensors.
+5. Normalizing pixel values using a Keras `Rescaling` layer.
+
+### Pixel Normalization
+
+Original image pixel values range from 0 to 255.
+
+The model uses:
+
+\[
+x_{\text{normalized}} = \frac{x}{255}
+\]
+
+This transforms pixel values into the range:
+
+\[
+0 \leq x_{\text{normalized}} \leq 1
+\]
+
+Normalization is implemented inside the model, so prediction images should not be normalized a second time.
+
+---
+
+## 🔄 Data Augmentation
+
+Data augmentation introduces controlled variations into training images to help the model learn more robust visual features.
+
+The project uses:
+
+| Augmentation | Purpose |
+|---|---|
+| Random Flip | Changes horizontal orientation |
+| Random Rotation | Introduces slight rotational variations |
+| Random Zoom | Changes image scale |
+| Random Contrast | Adjusts image contrast |
+
+These transformations are applied during training rather than permanently modifying the original dataset.
+
+---
+
+## 🧠 CNN Model Architecture
+
+The LeafVision model uses a sequential CNN architecture.
+
+### Architecture Overview
+
+```text
+Input Image
+(128 × 128 × 3)
+       |
+       ▼
+Rescaling (1./255)
+       |
+       ▼
+Data Augmentation
+       |
+       ▼
+Conv2D (32 filters)
+       |
+       ▼
+MaxPooling2D
+       |
+       ▼
+Conv2D (64 filters)
+       |
+       ▼
+MaxPooling2D
+       |
+       ▼
+Conv2D (128 filters)
+       |
+       ▼
+MaxPooling2D
+       |
+       ▼
+GlobalAveragePooling2D
+       |
+       ▼
+Dense (128, ReLU)
+       |
+       ▼
+Dropout (0.4)
+       |
+       ▼
+Dense (1, Sigmoid)
+       |
+       ▼
+Binary Classification
+Healthy / Unhealthy
+```
+
+### Layer Explanation
+
+| Layer | Function |
+|---|---|
+| Rescaling | Normalizes image pixel values |
+| Conv2D | Extracts visual features from images |
+| MaxPooling2D | Reduces spatial dimensions |
+| GlobalAveragePooling2D | Converts feature maps into a compact representation |
+| Dense | Learns higher-level classification patterns |
+| Dropout | Helps reduce overfitting |
+| Sigmoid | Produces a probability for the positive class |
+
+### Model Configuration
+
+| Parameter | Value |
+|---|---|
+| Input Shape | `(128, 128, 3)` |
+| Convolution Filters | 32, 64, 128 |
+| Dense Units | 128 |
+| Dropout Rate | 0.4 |
+| Output Units | 1 |
+| Activation | Sigmoid |
+| Loss | Binary Crossentropy |
+| Optimizer | Adam |
+| Maximum Epochs | 30 |
+
+**Total trainable and non-trainable parameters:** 109,889.
+
+---
+
+## 🚀 Model Training
+
+Training is performed using TensorFlow and Keras.
+
+The model learns from the training dataset while its performance is monitored using the validation dataset.
+
+### Training Callbacks
+
+Three callbacks are implemented:
+
+**1. EarlyStopping**
+
+Monitors validation loss and stops training when the model stops improving. It also restores the best weights.
+
+**2. ModelCheckpoint**
+
+Saves the model with the best validation loss.
+
+**3. ReduceLROnPlateau**
+
+Reduces the learning rate when validation loss stops improving.
+
+### Generated Training Artifacts
+
+After training, the project generates:
+
+- `models/best_leaf_classifier.keras`
+- `models/leaf_classifier.keras`
+- `results/training_history.csv`
+- `results/plots/training_history.png`
+
+The training history includes loss and accuracy values for both training and validation datasets.
+
+---
+
+## 📈 Model Evaluation
+
+The model is evaluated using the separate test dataset.
+
+### Test Results
+
+<details>
+<summary><strong>View evaluation results</strong></summary>
+
+| Metric | Result |
+|---|---:|
+| Test Images | 90 |
+| Correct Predictions | 77 |
+| Incorrect Predictions | 13 |
+| Test Accuracy | **85.56%** |
+| Macro F1-score | **Approximately 0.8547** |
+
+### Classification Report
+
+| Class | Precision | Recall | F1-score |
+|---|---:|---:|---:|
+| Healthy Leaf | 0.9211 | 0.7778 | 0.8434 |
+| Unhealthy Leaf | 0.8077 | 0.9333 | 0.8660 |
+
+### Confusion Matrix
+
+```text
+                 Predicted
+                 Healthy  Unhealthy
+
+Actual Healthy      35       10
+Actual Unhealthy     3       42
+```
+
+### Interpretation
+
+- 35 healthy leaves were correctly classified.
+- 10 healthy leaves were incorrectly classified as unhealthy.
+- 42 unhealthy leaves were correctly classified.
+- 3 unhealthy leaves were incorrectly classified as healthy.
+
+The model achieved a test accuracy of 85.56% on this dataset.
+
+However, the test set contains only 90 images. These results should be treated as an initial experimental benchmark, not proof of reliable real-world performance.
+
+</details>
+
+---
+
+## 🖥️ Interactive Dashboard
+
+LeafVision includes a Streamlit frontend that provides a visual interface for exploring the machine learning workflow.
+
+### Dashboard Features
+
+| Page | Functionality |
+|---|---|
+| Overview | Displays system status and dataset distribution |
+| Dataset | Visualizes dataset structure, class distribution, and sample images |
+| Training | Displays training history, loss, and accuracy |
+| Evaluation | Displays classification metrics and confusion matrix |
+| Prediction | Uploads an image and displays its predicted class and probabilities |
+
+### Dashboard Technologies
+
+- Streamlit
+- Pandas
+- Matplotlib
+- TensorFlow / Keras
+- NumPy
+- Pillow
+
+---
+
+## 💻 Command-Line Interface
+
+The project also includes a menu-driven CLI through `main.py`.
+
+It allows users to execute individual machine learning operations without manually running each Python script.
+
+### Available Operations
+
+| Option | Operation |
+|---|---|
+| 1 | Check Original Dataset |
+| 2 | Preprocess Sample Images |
+| 3 | Split Dataset |
+| 4 | Train CNN Model |
+| 5 | Evaluate CNN Model |
+| 6 | Predict Test Images |
+| 0 | Exit |
+
+The CLI uses Python's `subprocess` module to execute the existing source scripts and displays execution status, elapsed time, and exit codes.
+
+---
+
+## 🛠️ Installation and Setup
+
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/rahat-codes/CNN-model-Image-Binary-Classification.git
@@ -207,25 +420,29 @@ git clone https://github.com/rahat-codes/CNN-model-Image-Binary-Classification.g
 cd CNN-model-Image-Binary-Classification
 ```
 
-### Step 2: Create a Virtual Environment
+### 2. Create a Virtual Environment
 
-```bash
-python -m venv .venv
-```
-
-Activate the environment on Windows:
+Windows PowerShell:
 
 ```powershell
-.venv\Scripts\activate
+py -m venv .venv
 ```
 
-### Step 3: Install Dependencies
+Activate it:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### 3. Install Dependencies
 
 ```bash
+python -m pip install --upgrade pip
+
 pip install -r requirements.txt
 ```
 
-### Step 4: Prepare the Dataset
+### 4. Prepare the Dataset
 
 Place the original images into the following directories:
 
@@ -236,85 +453,125 @@ dataset/
     └── Unhealthy_leaf/
 ```
 
-Run the dataset preparation scripts according to the project workflow.
+Make sure each folder contains the appropriate images.
 
-### Step 5: Train the Model
+### 5. Run the CLI
 
 ```bash
+python main.py
+```
+
+### 6. Run the Streamlit Dashboard
+
+```bash
+streamlit run app/dashboard.py
+```
+
+Streamlit will provide a local URL in the terminal, normally:
+
+```text
+http://localhost:8501
+```
+
+---
+
+## 🔬 Running Individual Scripts
+
+You can also execute individual operations directly.
+
+```bash
+# Inspect the original dataset
+python src/check_dataset.py
+
+# Preprocess sample images
+python src/preprocess.py
+
+# Split the dataset
+python src/split_dataset.py
+
+# Train the CNN model
 python src/train.py
-```
 
-### Step 6: Evaluate the Model
-
-```bash
+# Evaluate the model
 python src/evaluate.py
-```
 
-### Step 7: Predict and Classify Images
-
-```bash
+# Predict images
 python src/predict.py
 ```
 
-The prediction script classifies test images and copies them into the corresponding prediction folders:
+Run these operations in the appropriate order when starting from a fresh dataset.
 
-```text
-results/
-└── predictions/
-    ├── Healthy_leaf/
-    └── Unhealthy_leaf/
-```
+---
 
-## 9. Experiment Notebook
+## 📦 Dependencies
 
-The repository includes `experiment.ipynb`, which documents the model experimentation process.
+The project uses the following Python libraries:
 
-The notebook covers:
-
-1. Importing libraries and loading the trained model.
-2. Inspecting the CNN architecture.
-3. Visualizing sample apple leaf images.
-4. Performing individual image predictions.
-5. Testing multiple images.
-6. Evaluating the complete test dataset.
-7. Generating a confusion matrix.
-8. Analyzing experimental results.
-
-## 10. Future Improvements
-
-Potential improvements for future experiments include:
-
-- Increasing dataset size and diversity.
-- Experimenting with different CNN architectures.
-- Applying transfer learning with MobileNetV2 or EfficientNet.
-- Performing systematic hyperparameter tuning.
-- Investigating overfitting and generalization.
-- Testing the model on images collected under different lighting and environmental conditions.
-
-## 11. Technologies Used
-
-- Python
 - TensorFlow
-- Keras
 - NumPy
+- Pandas
 - Matplotlib
 - Scikit-learn
-- Pandas
 - Pillow
-- Jupyter Notebook
+- Streamlit
 
-## 12. Author
+Install all dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🔮 Future Improvements
+
+Potential future improvements include:
+
+- Increase dataset size and diversity.
+- Evaluate the model on independent external datasets.
+- Experiment with deeper CNN architectures.
+- Compare CNN performance with transfer learning models such as MobileNetV2 and EfficientNet.
+- Apply hyperparameter tuning.
+- Improve model generalization.
+- Add Grad-CAM visualization to explain model predictions.
+- Add prediction history and downloadable reports.
+- Compare precision, recall, F1-score, and inference time across models.
+- Investigate probability calibration and decision thresholds.
+
+---
+
+## 📚 Learning Outcomes
+
+Through this project, I explored:
+
+- Image classification using deep learning.
+- CNN architecture and feature extraction.
+- TensorFlow and Keras model implementation.
+- Image preprocessing and data augmentation.
+- Training, validation, and testing workflows.
+- Model evaluation using classification metrics.
+- Python project organization and modular programming.
+- CLI development using subprocess execution.
+- Interactive machine learning visualization using Streamlit.
+
+---
+
+## 👨‍💻 Author
 
 **Rahat Md Mahadi Hasan**
 
 AI and Computer Engineering Student  
 Tongmyong University, Busan, South Korea
 
-- GitHub: [rahat-codes](https://github.com/rahat-codes)
+- GitHub: [@rahat-codes](https://github.com/rahat-codes)
 - LinkedIn: [Rahat Md Mahadi Hasan](https://linkedin.com/in/rahat-mahadi-hasan)
 
 ---
 
-<p align="center">
-  <strong>Built as a hands-on learning project in Deep Learning and Computer Vision.</strong>
-</p>
+## 📄 License
+
+This project is intended for educational and research purposes.
+
+---
+
+**LeafVision — From Image Data to Intelligent Classification.** 🍃
