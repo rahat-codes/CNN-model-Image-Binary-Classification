@@ -7,3 +7,4 @@ numpy
 pandas
 opencv-python  #penCV (cv2) is a computer vision library in Python. It is used to read, process, manipulate, and analyze images and videos.
 pillow #open, edit, resize, crop, convert, and save images.
+streamlit

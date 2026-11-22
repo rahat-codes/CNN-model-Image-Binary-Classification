@@ -1,4 +1,4 @@
-
+import json
 from pathlib import Path
 
 import numpy as np
@@ -90,6 +90,13 @@ print(f"Test Accuracy (%): {accuracy * 100:.2f}%")
 
 
 # Classification report
+report_dict = classification_report(
+    y_true,
+    y_pred,
+    target_names=CLASS_NAMES,
+    output_dict=True,
+    zero_division=0
+)
 report = classification_report(
     y_true,
     y_pred,
@@ -107,6 +114,23 @@ print(report)
 # ==========================================
 
 cm = confusion_matrix(y_true, y_pred, labels=[0, 1])
+
+# Save structured evaluation metrics for the dashboard
+metrics_path = RESULTS_DIR / "evaluation_metrics.json"
+
+evaluation_metrics = {
+    "accuracy": float(accuracy),
+    "total_samples": int(len(y_true)),
+    "threshold": float(THRESHOLD),
+    "class_names": CLASS_NAMES,
+    "classification_report": report_dict,
+    "confusion_matrix": cm.tolist()
+}
+
+with open(metrics_path, "w", encoding="utf-8") as file:
+    json.dump(evaluation_metrics, file, indent=4)
+
+print(f"Structured evaluation metrics saved: {metrics_path}")
 
 print("\nConfusion Matrix:")
 print(cm)
