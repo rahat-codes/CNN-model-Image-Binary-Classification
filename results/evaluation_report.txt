@@ -1,0 +1,19 @@
+BINARY CNN CLASSIFICATION - TEST RESULTS
+=============================================
+
+Test Accuracy: 0.9000
+Test Accuracy (%): 90.00%
+
+Classification Report:
+                precision    recall  f1-score   support
+
+  Healthy_leaf     0.9091    0.8889    0.8989        45
+Unhealthy_leaf     0.8913    0.9111    0.9011        45
+
+      accuracy                         0.9000        90
+     macro avg     0.9002    0.9000    0.9000        90
+  weighted avg     0.9002    0.9000    0.9000        90
+
+Confusion Matrix:
+[[40  5]
+ [ 4 41]]
